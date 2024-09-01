@@ -1,0 +1,32 @@
+
+<div class="container ">
+  
+<table class="table table-hover">
+    <thead>
+      <tr>    
+        <th scope="col">#</th>    
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Created On</th>
+      </tr>
+    </thead>
+    <tbody>
+      <div *ngIf="users.length === 0" class="spinner-border" role="status">
+        <span class="sr-only"></span>
+      </div>
+      <tr *ngFor="let user of users ; let i = index">
+        <th scope="row">{{(i+1).toString()}}</th>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.createdOn}}</td>
+        <td><button type="button" class="row-btn btn btn-warning" (click)="EditUser(user)" [routerLink]="['/EditUser']">Edit</button></td>
+        <td><button type="button" class="row-btn btn btn-danger">Delete</button></td>
+      </tr>      
+    </tbody>
+  </table>
+  <button *ngIf="users.length != 0" type="button" class="btn btn-info submit-button" [routerLink]="['/AddUser']">Add User</button>
+  <button *ngIf="users.length === 0" type="button" class="btn btn-info submit-button" disabled="true">
+    Add User    
+    <span class="spinner-border spinner-border-sm"></span>
+  </button>
+</div>
